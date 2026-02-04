@@ -3,8 +3,15 @@ import pandas as pd
 from joblib import load
 
 # Load trained Decision Tree pipeline
-model = load("DT_Tuned_pipeline.joblib")
+MODEL_PATH = os.path.join(os.path.dirname(__file__), "DT_Tuned_pipeline.joblib")
 
+
+@st.cache_resource
+def load_model():
+    return load(MODEL_PATH)
+
+
+model = load_model()
 st.title("Hotel Booking Cancellation Predictor")
 
 # Sidebar inputs
@@ -87,3 +94,4 @@ if st.button("Predict Cancellation"):
             f"✅ This booking is likely to be HONORED\n\n"
             f"Cancellation Probability: {probability:.2%}"
         )
+
