@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import os
 from joblib import load
 
 # Load trained Decision Tree pipeline
@@ -94,4 +95,5 @@ if st.button("Predict Cancellation"):
             f"✅ This booking is likely to be HONORED\n\n"
             f"Cancellation Probability: {probability:.2%}"
         )
+
 
